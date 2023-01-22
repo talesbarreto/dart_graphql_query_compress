@@ -1,5 +1,5 @@
 name: graphql_query_compress
-description: A starting point for Dart libraries or applications.
+description: Compress GraphQL query string
 repository: https://github.com/talesbarreto/dart_graphql_query_compress
 version: 0.0.1
 
