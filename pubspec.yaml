@@ -1,7 +1,7 @@
 name: graphql_query_compress
 description: A package that eliminates unnecessary characters from a GraphQL query, saving several bytes on requests.
 repository: https://github.com/talesbarreto/dart_graphql_query_compress
-version: 0.0.1
+version: 0.0.1+1
 
 environment:
   sdk: '>=2.18.5 <3.0.0'
