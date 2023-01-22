@@ -1,6 +1,7 @@
 /// [compressGraphqlQuery] eliminate unnecessary characters from a GraphQL query.
 /// You may use [GraphqlQueryCompressor] to inject this package and make your code testable
-String compressGraphqlQuery(String query) => GraphqlQueryCompressor.instance(query);
+String compressGraphqlQuery(String query) =>
+    GraphqlQueryCompressor.instance(query);
 
 enum _CharType {
   letter,
@@ -31,8 +32,11 @@ class GraphqlQueryCompressor {
   // remember: `static` in dart is lazy by default ;-)
   static final instance = GraphqlQueryCompressor._();
 
-  final _symbolsThatDoNotNeedSpace = ["{", "}", "(", ")", ":", ",", "."].map((e) => e.runes.first).toList(growable: false);
-  final _whiteSpace = [" ", "\t", "\n", "\r"].map((e) => e.runes.first).toList(growable: false);
+  final _symbolsThatDoNotNeedSpace = ["{", "}", "(", ")", ":", ",", "."]
+      .map((e) => e.runes.first)
+      .toList(growable: false);
+  final _whiteSpace =
+      [" ", "\t", "\n", "\r"].map((e) => e.runes.first).toList(growable: false);
   final _stringCharCode = "\"".runes.first;
   final _spaceCharCode = " ".runes.first;
   final _commentCharCode = "#".runes.first;
@@ -42,11 +46,13 @@ class GraphqlQueryCompressor {
 
   factory GraphqlQueryCompressor() => instance;
 
-  bool _isLetter(int code) => !_symbolsThatDoNotNeedSpace.contains(code) && !_whiteSpace.contains(code);
+  bool _isLetter(int code) =>
+      !_symbolsThatDoNotNeedSpace.contains(code) && !_whiteSpace.contains(code);
 
   bool _isWhiteSpace(int code) => _whiteSpace.contains(code);
 
-  bool _isSymbolThatDoesNotNeedSpace(int code) => _symbolsThatDoNotNeedSpace.contains(code);
+  bool _isSymbolThatDoesNotNeedSpace(int code) =>
+      _symbolsThatDoNotNeedSpace.contains(code);
 
   /// [call] compress a query, eliminating unwanted characters
   String call(String query) {
