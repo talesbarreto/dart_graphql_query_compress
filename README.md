@@ -1,5 +1,6 @@
-![flutter-ci](https://github.com/talesbarreto/graphql_query_compress/actions/workflows/flutter-ci.yml/badge.svg)
-Package that eliminates unnecessary characters from a GraphQL query, saving several bytes on requests.
+![flutter-ci](https://github.com/talesbarreto/dart_graphql_query_compress/actions/workflows/flutter-ci.yml/badge.svg)
+
+A package that eliminates unnecessary characters from a GraphQL query, saving several bytes on requests.
 
 ```dart
 final compressedQuery = compressGraphqlQuery(query);
@@ -28,6 +29,8 @@ final link = DioLink(
   _apiUrl,
   client: Dio(),
   useGETForQueries: true,
-  serializer: MyRequestSerializer(),
+  serializer: const RequestSerializerWithCompressor(),
 );
 ``` 
+___
+⚠️ This is still an experimental version. Use it carefully. Suggestions or contributions are appreciated
