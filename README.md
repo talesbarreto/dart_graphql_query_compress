@@ -1,17 +1,16 @@
 ![flutter-ci](https://github.com/talesbarreto/dart_graphql_query_compress/actions/workflows/flutter-ci.yml/badge.svg)
 
-A package that eliminates unnecessary characters from a GraphQL query, saving several bytes on requests.
+This package eliminates unnecessary characters from a GraphQL query, saving several bytes on requests.
 
 ```dart
 final compressedQuery = compressGraphqlQuery(query);
 ```
-see example for input and output sample
 
 ## Using it with `gql_dio_link`, `gql_http_link` or `graphql`
 
-GQL [will serialize your query in a human-readable format](https://github.com/gql-dart/gql/blob/master/gql/lib/src/language/printer.dart#L185) after parse it to DocumentNodes. Therefore, we can't simple compress it before use `GQL` parser.
+GQL [will serialize your query in a human-readable format](https://github.com/gql-dart/gql/blob/master/gql/lib/src/language/printer.dart#L185) after parse it to DocumentNodes. Therefore, we can't simple compress it before using the `GQL` parser.
 
-To ~~workaround~~ overcome this, we need to replace GQL `RequestSerializer` by `RequestSerializerWithCompressor`
+To overcome this, we need to replace GQL `RequestSerializer` by `RequestSerializerWithCompressor`
 
 ```dart
 return GraphQLClient(
@@ -22,7 +21,7 @@ return GraphQLClient(
   ),
 );
 ```
-Same deal with DioLink:
+The same applies to DioLink:
 
 ```dart
 final link = DioLink(
@@ -31,6 +30,4 @@ final link = DioLink(
   useGETForQueries: true,
   serializer: const RequestSerializerWithCompressor(),
 );
-``` 
-___
-⚠️ This is still an experimental version. Use it carefully. Suggestions or contributions are appreciated
+```
